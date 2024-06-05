@@ -4,13 +4,14 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    TouchingDirections touchingDirections;
-    public FireProjectile fireProjectile;
+    private Animator anim;
     private Rigidbody2D rb;
-    [SerializeField] private Animator anim;
+    private TouchingDirections touchingDirections;
+    [SerializeField] 
+    private FireProjectile fireProjectile;
 
     private float speed = 5f;
-    private float jumpingPower = 8f;
+    private float jumpingPower = 12f;
 
     private Vector2 moveInput;
     public float CurrentMoveSpeed
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
     }
     private void FixedUpdate()
@@ -78,6 +80,8 @@ public class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
 
         IsRunning = moveInput != Vector2.zero;
+
+        CheckMovementDirection(moveInput);
     }
 
     public void Jump(InputAction.CallbackContext context)

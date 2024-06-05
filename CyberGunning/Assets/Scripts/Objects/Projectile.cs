@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         rb.velocity = new Vector2(BulletSO.speed * transform.localScale.x, 0);
+        Destroy(gameObject, 5f);
     }
 
 
