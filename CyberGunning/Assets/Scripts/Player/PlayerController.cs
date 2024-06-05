@@ -1,0 +1,116 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerController : MonoBehaviour
+{
+    TouchingDirections touchingDirections;
+    public FireProjectile fireProjectile;
+    private Rigidbody2D rb;
+    [SerializeField] private Animator anim;
+
+    private float speed = 5f;
+    private float jumpingPower = 8f;
+
+    private Vector2 moveInput;
+    public float CurrentMoveSpeed
+    {
+        get
+        {
+            if(IsRunning && touchingDirections.IsOnWall)
+            {
+                //Idle Speed is 0
+                return 0;
+            }
+            else 
+            {
+                return speed;
+            }
+        }
+    }
+
+    public bool _isFacingRight = true;
+    private bool IsFacingRight
+    { get
+        {
+            return _isFacingRight;
+        }
+       set
+       {
+            if(_isFacingRight != value)
+            {
+                transform.localScale *= new Vector2(-1, 1);
+            }
+
+            _isFacingRight = value;
+       }
+    }
+
+    private bool _isRunning = false;
+    public bool IsRunning 
+    { 
+        get 
+        {
+            return _isRunning;
+        } 
+        private set
+        {
+            _isRunning = value;
+
+            anim.SetBool(AnimationStrings.IsRunningBool, value);
+
+        }
+    }
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        touchingDirections = GetComponent<TouchingDirections>();
+    }
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+
+        anim.SetFloat(AnimationStrings.YVelocity, rb.velocity.y);
+    }
+
+    public void MoveCharacter(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+
+        IsRunning = moveInput != Vector2.zero;
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.started && touchingDirections.IsGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+
+            anim.SetTrigger(AnimationStrings.JumpTrigger);
+
+        }
+    }
+
+    public void FireGun(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            anim.SetTrigger(AnimationStrings.FireGunTrigger);
+
+            fireProjectile.FireBullet();
+        }
+    }
+
+    private void CheckMovementDirection(Vector2 moveInput)
+    {
+        if (!IsFacingRight && moveInput.x > 0f)
+        {
+            IsFacingRight = true;
+        }
+        else if (IsFacingRight && moveInput.x < 0f)
+        {
+            IsFacingRight = false;
+        }
+    }
+
+}
