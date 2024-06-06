@@ -56,13 +56,13 @@ public class CopEnemy : MonoBehaviour
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite && distanceFromPlayer > range)
         {
-            Flip();
-            transform.position = Vector2.MoveTowards(this.transform.position, player.position, (moveSpeed * -walkDirectionVector.x) * Time.deltaTime);
+            //Moves the character towards the player
+            transform.position = Vector2.MoveTowards(this.transform.position, player.position, moveSpeed  * Time.deltaTime);
             
         }
         else if (distanceFromPlayer <= range && nextFireTime < Time.time)
         {
-            Flip();
+            
             fire.FireBullet();
             nextFireTime = Time.time + fireRate;
         }
