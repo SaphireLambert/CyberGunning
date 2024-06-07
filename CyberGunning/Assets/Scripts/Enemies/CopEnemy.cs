@@ -16,6 +16,8 @@ public class CopEnemy : MonoBehaviour
     [SerializeField]
     private float range = 6;
 
+    private Rigidbody2D rb;
+
     public enum WalkDirection { Right, Left}
 
     private WalkDirection _walkDir;
@@ -49,6 +51,7 @@ public class CopEnemy : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -56,13 +59,15 @@ public class CopEnemy : MonoBehaviour
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite && distanceFromPlayer > range)
         {
+
             //Moves the character towards the player
-            transform.position = Vector2.MoveTowards(this.transform.position, player.position, moveSpeed  * Time.deltaTime);
-            
+            //transform.position = Vector2.MoveTowards(this.transform.position, player.position, moveSpeed  * Time.deltaTime);
+            rb.velocity = new Vector2(walkDirectionVector.x * moveSpeed, rb.velocity.y);
+
         }
         else if (distanceFromPlayer <= range && nextFireTime < Time.time)
         {
-            
+            Flip();
             fire.FireBullet();
             nextFireTime = Time.time + fireRate;
         }

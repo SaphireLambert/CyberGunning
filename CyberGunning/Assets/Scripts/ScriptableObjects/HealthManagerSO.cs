@@ -2,16 +2,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class PlayerHealthManager : ScriptableObject
+[CreateAssetMenu(fileName = "HealthManagerSO", menuName = "ScriptableObjects/HealthManager")]
+public class HealthManagerSO : ScriptableObject
 {
 
-    [SerializeField]
-    private float m_Health;
-    [SerializeField]
-    private float c_Health;
-
-    [SerializeField]
-    private Slider healthBar;
+    public float m_Health;
+    
+    public float c_Health;
 
     [System.NonSerialized]
     public UnityEvent<float> UpdateHealth;
