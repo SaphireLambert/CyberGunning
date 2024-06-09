@@ -1,32 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBarManager : MonoBehaviour
 {
-    [SerializeField] private Slider healthBarSlider;
-    private Color lowHP;
-    private Color highHP;
+    [SerializeField]
+    private Slider healthBarSlider;
 
-    [SerializeField] private Vector3 offset;
-
-    private void Start()
-    {
-        healthBarSlider.gameObject.SetActive(true);
-    }
+    [SerializeField]
+    private HealthManagerSO healthManager;
     private void Update()
-    {
-        healthBarSlider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+    {        
+        UpdateSliderPercent(healthManager.c_Health);
     }
 
-    public void SetHealth(float cHealth, float mHealth)
+    private void OnEnable()
     {
-        healthBarSlider.value = cHealth;
-        healthBarSlider.maxValue = mHealth;
-
-        healthBarSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(lowHP, highHP, healthBarSlider.normalizedValue);
+        healthManager.UpdateHealth.AddListener(UpdateSliderPercent);
     }
-    
+
+    private void OnDisable()
+    {
+        healthManager.UpdateHealth.RemoveListener(UpdateSliderPercent);
+    }
+
+    private void UpdateSliderPercent(float amount)
+    {
+        healthBarSlider.value = amount;
+    }
 }

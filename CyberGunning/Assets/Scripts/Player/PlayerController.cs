@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     private TouchingDirections touchingDirections;
     [SerializeField] 
     private FireProjectile fireProjectile;
+    [SerializeField]
+    private HealthManagerSO healthManager;
+    [SerializeField]
+    private PlayerInput input;
 
     private float speed = 5f;
     private float jumpingPower = 12f;
@@ -67,7 +71,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
+        input = GetComponent<PlayerInput>();
     }
+
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
@@ -114,6 +120,14 @@ public class PlayerController : MonoBehaviour
         else if (IsFacingRight && moveInput.x < 0f)
         {
             IsFacingRight = false;
+        }
+    }
+
+    private void OnDeath()
+    {
+        if(healthManager.c_Health <= 0)
+        {
+            input.DeactivateInput();
         }
     }
 

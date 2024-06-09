@@ -184,3 +184,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletSO: {fileID: 11400000, guid: 47674cf3b64ff624baa6f8c395913db4, type: 2}
+  healthManager: {fileID: 11400000, guid: c33d20a75e2b2114dba82701e3f33a8a, type: 2}
