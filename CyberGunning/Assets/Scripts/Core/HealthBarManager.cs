@@ -8,9 +8,15 @@ public class HealthBarManager : MonoBehaviour
 
     [SerializeField]
     private HealthManagerSO healthManager;
+
+    public bool isCharacterAlive = true;
     private void Update()
     {        
         UpdateSliderPercent(healthManager.c_Health);
+        if(healthManager.c_Health >= 0)
+        {
+            isCharacterAlive = false;
+        }
     }
 
     private void OnEnable()
@@ -22,6 +28,7 @@ public class HealthBarManager : MonoBehaviour
     {
         healthManager.UpdateHealth.RemoveListener(UpdateSliderPercent);
     }
+
 
     private void UpdateSliderPercent(float amount)
     {

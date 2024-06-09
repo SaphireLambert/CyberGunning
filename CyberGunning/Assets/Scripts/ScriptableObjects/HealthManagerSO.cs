@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "HealthManagerSO", menuName = "ScriptableObjects/HealthManager")]
 public class HealthManagerSO : ScriptableObject

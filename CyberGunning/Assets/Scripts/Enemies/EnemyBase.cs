@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CopEnemy : MonoBehaviour
+public class EnemyBase : MonoBehaviour
+
 {
-    private float moveSpeed = 3;
-    private Transform player;
-    private float nextFireTime;
-    private float fireRate = 1;
+    [SerializeField]
+    private EnemySO enemyStats;
 
     [SerializeField]
+    private HealthBarManager healthBarManager;
+
+    private Transform player;
+    private float nextFireTime;
+
     private FireProjectile fire;
-    [SerializeField]
-    private float lineOfSite = 7;
-    [SerializeField]
-    private float range = 6;
 
     private Rigidbody2D rb;
 
+    private Animator anim;
     public enum WalkDirection { Right, Left}
 
     private WalkDirection _walkDir;
@@ -52,25 +53,34 @@ public class CopEnemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+        fire = GetComponent<FireProjectile>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
-        if (distanceFromPlayer < lineOfSite && distanceFromPlayer > range)
+        if (distanceFromPlayer < enemyStats.lineOfSight && distanceFromPlayer > enemyStats.range)
         {
 
             //Moves the character towards the player
             //transform.position = Vector2.MoveTowards(this.transform.position, player.position, moveSpeed  * Time.deltaTime);
-            rb.velocity = new Vector2(walkDirectionVector.x * moveSpeed, rb.velocity.y);
-
+            rb.velocity = new Vector2(walkDirectionVector.x * enemyStats.moveSpeed, rb.velocity.y);
+            //rb.MovePosition((Vector2)transform.position + walkDirectionVector * enemyStats.moveSpeed * Time.deltaTime);
+            anim.SetBool(AnimationStrings.IsRunningBool, true);
         }
-        else if (distanceFromPlayer <= range && nextFireTime < Time.time)
+        else if (distanceFromPlayer <= enemyStats.range && nextFireTime < Time.time)
         {
             Flip();
             fire.FireBullet();
-            nextFireTime = Time.time + fireRate;
+            anim.SetTrigger(AnimationStrings.FireGunTrigger);
+            nextFireTime = Time.time + enemyStats.fireRate;
         }
+    }
+
+    private void Update()
+    {
+        IsDead();
     }
 
     private void Flip()
@@ -85,10 +95,18 @@ public class CopEnemy : MonoBehaviour
         }
     }
 
+    private void IsDead()
+    {
+        if (!healthBarManager.isCharacterAlive)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, lineOfSite);
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, enemyStats.lineOfSight);
+        Gizmos.DrawWireSphere(transform.position, enemyStats.range);
     }
 }
