@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -5,6 +6,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private BulletSO BulletSO;
     [SerializeField] private HealthManagerSO healthManager;
+    private Damageable damageable;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,8 +21,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Damageable damageable = collision.GetComponent<Damageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(BulletSO.damage);
+
+            UnityEngine.Debug.Log("Enemy Taken Damage");
+        }
         healthManager.Decreasehealth(BulletSO.damage);
-        Debug.Log(healthManager.c_Health);
         Destroy(this.gameObject);
     }
 }

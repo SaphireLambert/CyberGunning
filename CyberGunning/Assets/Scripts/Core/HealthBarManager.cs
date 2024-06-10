@@ -1,34 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This is a script for anything other than the player that would need a health bar. 
+/// Generally used on enemies is connected to the damageable script rather than a scriptable object in order to let enemies of the
+/// same type have different health values.
+/// </summary>
 public class HealthBarManager : MonoBehaviour
 {
     [SerializeField]
     private Slider healthBarSlider;
 
     [SerializeField]
-    private HealthManagerSO healthManager;
+    private Damageable damageable;
 
-    public bool isCharacterAlive = true;
     private void Update()
-    {        
-        UpdateSliderPercent(healthManager.c_Health);
-        if(healthManager.c_Health >= 0)
-        {
-            isCharacterAlive = false;
-        }
-    }
-
-    private void OnEnable()
     {
-        healthManager.UpdateHealth.AddListener(UpdateSliderPercent);
+        UpdateSliderPercent(damageable.CurrentHealth);
     }
-
-    private void OnDisable()
-    {
-        healthManager.UpdateHealth.RemoveListener(UpdateSliderPercent);
-    }
-
 
     private void UpdateSliderPercent(float amount)
     {

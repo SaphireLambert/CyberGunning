@@ -8,9 +8,6 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     private EnemySO enemyStats;
 
-    [SerializeField]
-    private HealthBarManager healthBarManager;
-
     private Transform player;
     private float nextFireTime;
 
@@ -78,11 +75,6 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        IsDead();
-    }
-
     private void Flip()
     {
         if(WalkDir == WalkDirection.Left)
@@ -92,14 +84,6 @@ public class EnemyBase : MonoBehaviour
         if(WalkDir == WalkDirection.Right)
         {
             WalkDir = WalkDirection.Left;
-        }
-    }
-
-    private void IsDead()
-    {
-        if (!healthBarManager.isCharacterAlive)
-        {
-            Destroy(gameObject);
         }
     }
 

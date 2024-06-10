@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2247534955583772937}
   - component: {fileID: 5413645166873239988}
   - component: {fileID: 3358919719286084411}
-  - component: {fileID: 8896254550723880570}
   - component: {fileID: 7186907068083159393}
   m_Layer: 0
   m_Name: YellowJacketPlayer
@@ -152,7 +151,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1077466, y: -0.24794406}
+  m_Offset: {x: 0.039521933, y: -0.2615555}
   m_Size: {x: 0.3214016, y: 1.608441}
   m_Direction: 0
 --- !u!114 &6708181728427368865
@@ -184,7 +183,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2247534955583772937}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: MoveCharacter
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -286,7 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireProjectile: {fileID: 3358919719286084411}
-  anim: {fileID: 7186907068083159393}
+  healthManager: {fileID: 11400000, guid: c33d20a75e2b2114dba82701e3f33a8a, type: 2}
+  input: {fileID: 0}
   _isFacingRight: 1
 --- !u!114 &5413645166873239988
 MonoBehaviour:
@@ -316,6 +316,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   touchingCol: {fileID: 5912051263523586878}
   anim: {fileID: 7186907068083159393}
+  _isGrounded: 1
   wallDistance: 0.05
   _isOnWall: 0
   roofDistance: 0.05
@@ -331,24 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43636a4e39415e408c32651b3bd57db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 3524960557785116228, guid: 04ee4c6bc3c2e584a9312aee8b477697, type: 3}
   launchPoint: {fileID: 4047416672674890280}
---- !u!114 &8896254550723880570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3359515919366688590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c80f217502e9b249baa87d209c1f6a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invincibilityTimer: 0.25
-  _maxHealth: 100
-  _currentHealth: 100
-  _isAlive: 1
 --- !u!95 &7186907068083159393
 Animator:
   serializedVersion: 5
