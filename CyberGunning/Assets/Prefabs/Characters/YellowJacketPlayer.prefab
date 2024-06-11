@@ -286,7 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireProjectile: {fileID: 3358919719286084411}
   healthManager: {fileID: 11400000, guid: c33d20a75e2b2114dba82701e3f33a8a, type: 2}
-  input: {fileID: 0}
   _isFacingRight: 1
 --- !u!114 &5413645166873239988
 MonoBehaviour:

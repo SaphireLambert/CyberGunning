@@ -28,7 +28,11 @@ public class Projectile : MonoBehaviour
 
             UnityEngine.Debug.Log("Enemy Taken Damage");
         }
-        healthManager.Decreasehealth(BulletSO.damage);
+        if (collision.CompareTag("Player"))
+        {
+            healthManager.Decreasehealth(BulletSO.damage);
+        }
+       
         Destroy(this.gameObject);
     }
 }

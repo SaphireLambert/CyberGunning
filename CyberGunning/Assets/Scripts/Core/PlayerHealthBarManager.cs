@@ -6,6 +6,9 @@ public class PlayerHealthBarManager : MonoBehaviour
     [SerializeField]
     private Slider healthBarSlider;
 
+    private Color green = Color.green;
+    private Color red = Color.red;
+
     [SerializeField]
     private HealthManagerSO healthManager;
 
@@ -29,5 +32,6 @@ public class PlayerHealthBarManager : MonoBehaviour
     private void UpdateSliderPercent(float amount)
     {
         healthBarSlider.value = amount;
+        healthBarSlider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(red, green, healthBarSlider.normalizedValue);
     }
 }

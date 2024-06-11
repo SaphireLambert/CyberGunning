@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Timeline;
 using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
     private Animator anim;
-    private bool isInvincible = false;
-    private float timeSinceHit = 0;
-    [SerializeField]
-    private float invincibilityTimer = 0.25f;
 
     [SerializeField]
     private float _maxHealth = 100f;
@@ -40,6 +33,7 @@ public class Damageable : MonoBehaviour
             if(_currentHealth <= 0)
             {
                 IsAlive = false;
+                Destroy(gameObject, 0.5f);
             }
         }
     }
@@ -65,27 +59,13 @@ public class Damageable : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if(isInvincible)
-        {
-            if(timeSinceHit > invincibilityTimer)
-            {
-                //Remove Invinvibilty
-                isInvincible = false;
-                timeSinceHit = 0;
-            }
-
-            timeSinceHit += Time.deltaTime;
-        }
-    }
 
     public void TakeDamage(float damage)
     {
-        if (IsAlive && !isInvincible)
+        if (IsAlive)
         {
             CurrentHealth -= damage;
-            isInvincible = true;
+
         }
     }
 }

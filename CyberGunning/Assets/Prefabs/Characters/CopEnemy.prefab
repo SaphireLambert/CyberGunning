@@ -143,6 +143,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6671674538646242101}
   - component: {fileID: 2352052272958269014}
+  - component: {fileID: 5407612656174168278}
+  - component: {fileID: 2582042052232378490}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -216,12 +218,40 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5407612656174168278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3149094473805308102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772b35ca3836ef74aaaec540c6c33afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarSlider: {fileID: 2352052272958269014}
+  damageable: {fileID: 2980648156474750437}
+--- !u!114 &2582042052232378490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3149094473805308102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772b35ca3836ef74aaaec540c6c33afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarSlider: {fileID: 2352052272958269014}
+  damageable: {fileID: 2980648156474750437}
 --- !u!1 &5598252501908540725
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,8 +285,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0909996, y: 0.16400003}
+  m_SizeDelta: {x: -0.475, y: -0.913}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6509461201985057909
 GameObject:
@@ -472,7 +502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c80f217502e9b249baa87d209c1f6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincibilityTimer: 0.25
   _maxHealth: 100
   _currentHealth: 100
   _isAlive: 1
@@ -541,8 +570,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e3a403b67e7cfb343974213b12033f25, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -616,8 +645,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5b3ab7e7dfc065747a9644a3ec895271, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
