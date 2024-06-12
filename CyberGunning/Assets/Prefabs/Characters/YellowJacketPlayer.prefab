@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5413645166873239988}
   - component: {fileID: 3358919719286084411}
   - component: {fileID: 7186907068083159393}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: YellowJacketPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -151,8 +151,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.039521933, y: -0.2615555}
-  m_Size: {x: 0.3214016, y: 1.608441}
+  m_Offset: {x: -0.16104126, y: -0.24558067}
+  m_Size: {x: 0.5697181, y: 1.6125832}
   m_Direction: 0
 --- !u!114 &6708181728427368865
 MonoBehaviour:
@@ -267,6 +267,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c28b7529-d57a-4d05-af98-10422656fe08
     m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2247534955583772937}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 386b8d3f-e732-40a0-a546-2763872d5320
+    m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -363,7 +379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4047416672674890280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

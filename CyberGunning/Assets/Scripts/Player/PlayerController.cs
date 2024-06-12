@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private FireProjectile fireProjectile;
     [SerializeField]
     private HealthManagerSO healthManager;
+
 
 
     private float speed = 5f;
@@ -70,7 +72,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
-        //input = GetComponent<PlayerInput>();
+
     }
 
     private void FixedUpdate()
@@ -107,6 +109,19 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger(AnimationStrings.FireGunTrigger);
 
             fireProjectile.FireBullet();
+        }
+    }
+
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        if (context.started && touchingDirections.IsGrounded) 
+        {
+            anim.SetBool(AnimationStrings.IsCrouchedBool, true);
+            
+        }
+        if (context.canceled)
+        {
+            anim.SetBool(AnimationStrings.IsCrouchedBool, false);
         }
     }
 
