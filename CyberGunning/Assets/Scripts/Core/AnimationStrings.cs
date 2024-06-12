@@ -16,4 +16,5 @@ internal class AnimationStrings
     internal static string IsAliveBool = "IsAlive";
     internal static string HasTargetBool = "HasTarget";
     internal static string IsCrouchedBool = "IsCrouched";
+    internal static string IsClimbing = "IsClimbing";
 }

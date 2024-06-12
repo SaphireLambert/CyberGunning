@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     private FireProjectile fireProjectile;
     [SerializeField]
     private HealthManagerSO healthManager;
-
-
+    [SerializeField]
+    private LaderSystem laderSystem;
 
     private float speed = 5f;
     private float jumpingPower = 12f;
@@ -65,6 +65,18 @@ public class PlayerController : MonoBehaviour
 
             anim.SetBool(AnimationStrings.IsRunningBool, value);
 
+        }
+    }
+
+    public bool IsClimbingLadder
+    {
+        get
+        {
+            return laderSystem.isClimbing;
+        }
+        set
+        {
+            anim.SetBool(AnimationStrings.IsClimbing, true);
         }
     }
     private void Awake()
