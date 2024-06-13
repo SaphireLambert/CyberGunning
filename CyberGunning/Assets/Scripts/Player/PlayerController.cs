@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private TouchingDirections touchingDirections;
-    [SerializeField] 
     private FireProjectile fireProjectile;
     [SerializeField]
-    private HealthManagerSO healthManager;
+    private GameObject gameOverUI;
+
     [SerializeField]
+    private HealthManagerSO healthManager;
+
     private LaderSystem laderSystem;
 
     private float speed = 5f;
@@ -84,7 +86,20 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
+        fireProjectile = GetComponent<FireProjectile>();
+        if(laderSystem != null)
+        {
+            laderSystem = GameObject.FindGameObjectWithTag("Ladder").GetComponent<LaderSystem>();
+        }
+        gameOverUI.SetActive(false);
+    }
 
+    private void Update()
+    {
+        if(healthManager.c_Health <= 0)
+        {
+            gameOverUI.SetActive(true);
+        }
     }
 
     private void FixedUpdate()

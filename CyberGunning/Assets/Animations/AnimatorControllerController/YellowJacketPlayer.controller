@@ -58,6 +58,9 @@ AnimatorTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsGrounded
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsClimbing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: -2975563047348312315}
   m_DstState: {fileID: 0}
   m_Solo: 0
