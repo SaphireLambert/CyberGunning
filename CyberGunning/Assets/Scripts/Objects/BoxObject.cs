@@ -27,7 +27,7 @@ public class BoxObject : MonoBehaviour
         }
        if(damageable.CurrentHealth <= 0)
         {
-            Instantiate(money);
+            Instantiate(money, this.transform.position, this.transform.rotation);
             Destroy(gameObject);
         }
     }

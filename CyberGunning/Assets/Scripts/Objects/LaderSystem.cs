@@ -32,6 +32,10 @@ public class LaderSystem : MonoBehaviour
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(rb.velocity.x, vertical * 5);
         }
+        else
+        {
+            rb.gravityScale = 2f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
