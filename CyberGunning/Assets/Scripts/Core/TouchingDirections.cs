@@ -13,14 +13,14 @@ public class TouchingDirections : MonoBehaviour
     private RaycastHit2D[] groundHits = new RaycastHit2D[5];
     private float groundDistance = 0.05f;
     [SerializeField]
-    private bool _isGrounded = true;
+    public bool _isGrounded = true;
     public bool IsGrounded 
     {
         get
         {
             return _isGrounded;
         } 
-      private set
+       set
         {
             _isGrounded = value;  
 

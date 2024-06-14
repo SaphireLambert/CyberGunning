@@ -8,11 +8,13 @@ public class LaderSystem : MonoBehaviour
     public bool isOnLadder;
     public bool isClimbing;
     private Rigidbody2D rb;
+    private TouchingDirections touchingDirections;
 
 
     private void Awake()
     {
         rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        touchingDirections = GameObject.FindGameObjectWithTag("Player").GetComponent<TouchingDirections>(); 
     }
 
     private void Update()
@@ -43,6 +45,7 @@ public class LaderSystem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isOnLadder = true;
+            touchingDirections._isGrounded = true;
         }
     }
 
@@ -52,6 +55,7 @@ public class LaderSystem : MonoBehaviour
         {
             isOnLadder = false;
             isClimbing = false;
+            touchingDirections._isGrounded = false;
         }
     }
 }

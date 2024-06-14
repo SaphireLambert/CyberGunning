@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LaderSystem laderSystem;
 
+    private bool isCrouched;
+
     private float speed = 5f;
     private float jumpingPower = 12f;
 
@@ -96,11 +98,14 @@ public class PlayerController : MonoBehaviour
 
     public void MoveCharacter(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        if(!isCrouched)
+        {
+            moveInput = context.ReadValue<Vector2>();
 
-        IsRunning = moveInput != Vector2.zero;
+            IsRunning = moveInput != Vector2.zero;
 
-        CheckMovementDirection(moveInput);
+            CheckMovementDirection(moveInput);
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -129,11 +134,12 @@ public class PlayerController : MonoBehaviour
         if (context.started && touchingDirections.IsGrounded) 
         {
             anim.SetBool(AnimationStrings.IsCrouchedBool, true);
-            
+            isCrouched = true;
         }
         if (context.canceled)
         {
             anim.SetBool(AnimationStrings.IsCrouchedBool, false);
+            isCrouched = false;
         }
     }
 
