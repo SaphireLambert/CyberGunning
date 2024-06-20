@@ -12,6 +12,6 @@ public class PlayerDeath : MonoBehaviour
     {
         healthManagerSO.c_Health = healthManagerSO.m_Health;
         SceneManager.LoadScene(0);
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(true);
     }
 }

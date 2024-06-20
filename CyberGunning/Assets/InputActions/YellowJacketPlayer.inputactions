@@ -133,6 +133,17 @@
                 },
                 {
                     "name": "",
+                    "id": "52d55d7f-07b6-4cec-9d0c-2391ea2accab",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a9659052-4c18-4bd2-a162-5db2f112bac2",
                     "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
@@ -149,6 +160,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed02ccdd-ccb8-4626-b896-9a2d2cb77df3",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
