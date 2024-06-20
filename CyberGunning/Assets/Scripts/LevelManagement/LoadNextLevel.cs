@@ -14,7 +14,11 @@ public class LoadNextLevel : MonoBehaviour
     }
     void LoadRandomScene()
     {
+<<<<<<< HEAD
         int sceneNumber = Random.Range(1,4);
+=======
+        int sceneNumber = Random.Range(1,2);
+>>>>>>> fd99b039d10ffc5a3397498374804a72d0f108f9
         SceneManager.LoadScene(sceneNumber);
     }
 }
