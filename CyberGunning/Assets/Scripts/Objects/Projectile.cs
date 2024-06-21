@@ -5,7 +5,7 @@ public class Projectile : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private BulletSO BulletSO;
-    [SerializeField] private HealthManagerSO healthManager;
+    [SerializeField] private PlayerUIManagerSO healthManager;
     private Damageable damageable;
     private void Awake()
     {

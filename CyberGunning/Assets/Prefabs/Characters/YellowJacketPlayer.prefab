@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4246386710664132272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6df894a067ca8640aac43ba4447fd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthManagerSO: {fileID: 11400000, guid: c33d20a75e2b2114dba82701e3f33a8a, type: 2}
+  healthManagerSO: {fileID: 11400000, guid: d66f87091585cc74690c33fc09898228, type: 2}
 --- !u!1 &461927865878111937
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 152027919316141869}
-  healthManager: {fileID: 11400000, guid: c33d20a75e2b2114dba82701e3f33a8a, type: 2}
+  healthManager: {fileID: 11400000, guid: d66f87091585cc74690c33fc09898228, type: 2}
   _isFacingRight: 1
 --- !u!114 &5413645166873239988
 MonoBehaviour:
@@ -677,7 +677,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8586350508602273982}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7965006302496112475}
+        m_TargetAssemblyTypeName: PlayerDeath, Assembly-CSharp
+        m_MethodName: OnCharacterDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6139471885303337862
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +920,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 57.562714
       objectReference: {fileID: 0}
+    - target: {fileID: 1793974119388713658, guid: 34e245546f2430842be95d50dbfcad73, type: 3}
+      propertyPath: healthManager
+      value: 
+      objectReference: {fileID: 11400000, guid: d66f87091585cc74690c33fc09898228, type: 2}
     - target: {fileID: 2113231796387302842, guid: 34e245546f2430842be95d50dbfcad73, type: 3}
       propertyPath: m_Sprite
       value: 

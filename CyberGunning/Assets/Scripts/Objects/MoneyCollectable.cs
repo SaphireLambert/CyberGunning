@@ -7,16 +7,30 @@ using UnityEngine;
 public class MoneyCollectable : MonoBehaviour
 {
 
-    private TextMeshProUGUI moneycounter;
+    [SerializeField]
+    private PlayerUIManagerSO playerUIManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            //Add money to the counter
-            //moneycounter.SetText(moneycounter.text + 1);
-            //Destroy the money from the scene
+            UpdateMoneyCount(100f);
             Destroy(gameObject);
         }
+    }
+
+    private void OnEnable()
+    {
+        playerUIManager.UpdateHealth.AddListener(UpdateMoneyCount);
+    }
+
+    private void OnDisable()
+    {
+        playerUIManager.UpdateHealth.RemoveListener(UpdateMoneyCount);
+    }
+
+    public void UpdateMoneyCount(float amount)
+    {
+        playerUIManager.moneyCount += amount;
     }
 }

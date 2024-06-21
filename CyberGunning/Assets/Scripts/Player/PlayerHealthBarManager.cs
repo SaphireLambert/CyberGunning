@@ -10,7 +10,7 @@ public class PlayerHealthBarManager : MonoBehaviour
     private Color red = Color.red;
 
     [SerializeField]
-    private HealthManagerSO healthManager;
+    private PlayerUIManagerSO healthManager;
 
 
     private void Update()

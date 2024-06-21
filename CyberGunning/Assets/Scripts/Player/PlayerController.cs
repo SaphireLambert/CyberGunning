@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private GameObject gameOverUI;
 
     [SerializeField]
-    private HealthManagerSO healthManager;
+    private PlayerUIManagerSO healthManager;
 
     private LaderSystem laderSystem;
 

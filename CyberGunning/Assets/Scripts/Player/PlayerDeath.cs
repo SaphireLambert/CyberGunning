@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerDeath : MonoBehaviour
 {
     [SerializeField]
-    private HealthManagerSO healthManagerSO;
+    private PlayerUIManagerSO healthManagerSO;
 
     public void OnCharacterDeath()
     {

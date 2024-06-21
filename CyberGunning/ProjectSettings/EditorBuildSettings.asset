@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Levels/Home/HomeBase.unity
+    guid: 33b62bc028249ef4dac8255a028da406
+  - enabled: 1
+    path: Assets/Scenes/Levels/Prison/Level02.unity
+    guid: 53436141e28ff0d4aa2e0c3a2fd4fa24
+  - enabled: 1
+    path: Assets/Scenes/Levels/Prison/Level03.unity
+    guid: d6c75be2936add641902f31caf101f3f
   m_configObjects: {}
