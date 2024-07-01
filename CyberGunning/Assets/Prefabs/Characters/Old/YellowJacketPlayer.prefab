@@ -199,7 +199,8 @@ GameObject:
   - component: {fileID: 3098160177267816065}
   - component: {fileID: 5912051263523586878}
   - component: {fileID: 6708181728427368865}
-  - component: {fileID: 2247534955583772937}
+  - component: {fileID: 8746011157295012623}
+  - component: {fileID: 3576261637900312271}
   - component: {fileID: 5413645166873239988}
   - component: {fileID: 3358919719286084411}
   - component: {fileID: 7186907068083159393}
@@ -368,9 +369,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2247534955583772937}
+      - m_Target: {fileID: 8746011157295012623}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: MoveCharacter
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -384,7 +385,7 @@ MonoBehaviour:
     m_ActionName: Player/Move
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2247534955583772937}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: FireGun
         m_Mode: 0
@@ -440,9 +441,9 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2247534955583772937}
+      - m_Target: {fileID: 8746011157295012623}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Jump
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -456,7 +457,7 @@ MonoBehaviour:
     m_ActionName: Player/New action
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2247534955583772937}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnCrouch
         m_Mode: 0
@@ -472,10 +473,10 @@ MonoBehaviour:
     m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: GamePlay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2247534955583772937
+--- !u!114 &8746011157295012623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -484,12 +485,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3359515919366688590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5ee0df010fd6143b80ac8b8d5cdd64, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bde9f5eed2c49b41971e74438d6865e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverUI: {fileID: 152027919316141869}
-  healthManager: {fileID: 11400000, guid: d66f87091585cc74690c33fc09898228, type: 2}
-  _isFacingRight: 1
+--- !u!114 &3576261637900312271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3359515919366688590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e536086a898b54b8f8fc898f771d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5413645166873239988
 MonoBehaviour:
   m_ObjectHideFlags: 0
