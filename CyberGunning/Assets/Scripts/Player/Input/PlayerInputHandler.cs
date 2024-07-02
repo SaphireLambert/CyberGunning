@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +11,46 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormInputY { get; private set; }
     public bool JumpInput { get; private set; }
 
+    public bool[] AttackInputs { get; private set; }
+
     [SerializeField]
     private float inputHoldTime = 0.02f;
 
     private float jumpInputStartTime;
 
+    private void Start()
+    {
+        int count = Enum.GetValues(typeof(CombatInputs)).Length;    
+        AttackInputs = new bool[count];
+    }
+
     private void Update()
     {
         CheckJumpInputHoldTime();
+    }
+    public void OnPrimaryAttck(InputAction.CallbackContext context) //This is the gun attack
+    {
+        if(context.started)
+        {
+            AttackInputs[(int)CombatInputs.primary] = true;
+        }
+
+        if(context.canceled)
+        {
+            AttackInputs[(int)CombatInputs.primary] = false;
+        }
+    }
+    public void OnSecondaryAttack(InputAction.CallbackContext context) // This is the kick attack
+    {
+        if (context.started)
+        {
+            AttackInputs[(int)CombatInputs.secondary] = true;
+        }
+
+        if (context.canceled)
+        {
+            AttackInputs[(int)CombatInputs.secondary] = false;
+        }
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -47,3 +80,10 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 }
+
+public enum CombatInputs 
+{ 
+    primary,
+    secondary
+}
+

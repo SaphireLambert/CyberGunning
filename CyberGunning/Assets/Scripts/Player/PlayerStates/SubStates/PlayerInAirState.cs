@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInAirState : PlayerState
 {
     private bool isGrounded;
     private bool isTouchingWall;
+    private bool isTouchingWallBack;
+    private bool isOnLadder;
     private bool jumpInput;
     private bool coyoteTime;
 
@@ -18,8 +21,14 @@ public class PlayerInAirState : PlayerState
     public override void DoChecks()
     {
         base.DoChecks();
+
         isGrounded = player.CheckIfGrounded();
+
         isTouchingWall = player.CheckIfTouchingWall();
+        isTouchingWallBack = player.CheckIfTouchingWallBack();
+        isOnLadder = player.CheckIfOnLadder();
+
+
     }
 
     public override void Enter()
@@ -47,13 +56,31 @@ public class PlayerInAirState : PlayerState
         xInput = player.InputHandler.NormInputX;
         jumpInput = player.InputHandler.JumpInput;
 
-        if (isGrounded && player.CurrentVelocity.y < 0.01f)
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary])
+        {
+            stateMachiene.ChangeState(player.PrimaryAttackState);
+        }
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary])
+        {
+            stateMachiene.ChangeState(player.SecondaryAttackState);
+        }
+        else if (isGrounded && player.CurrentVelocity.y < 0.01f)
         {
             stateMachiene.ChangeState(player.LandState);
         }
+        else if (jumpInput && (isTouchingWall || isTouchingWallBack))
+        {
+            player.WallJumpState.WallJumpDirection(isTouchingWall);
+            stateMachiene.ChangeState(player.WallJumpState);    
+        }
         else if (jumpInput && player.JumpState.CanJump())
         {
+            player.InputHandler.UseJumpInput();
             stateMachiene.ChangeState(player.JumpState);
+        }
+        else if(isOnLadder)
+        {
+            stateMachiene.ChangeState(player.OnLadderState);
         }
         else if(isTouchingWall && xInput == player.FacingDirection && player.CurrentVelocity.y <= 0)
         {

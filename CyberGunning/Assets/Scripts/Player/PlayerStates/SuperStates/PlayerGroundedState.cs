@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerGroundedState : PlayerState
 {
     protected int xInput;
+    protected int yInput;
 
     private bool JumpInput;
-
     private bool isGrounded;
+    private bool isOnLadder;
 
     public PlayerGroundedState(Player player, PlayerStateMachiene stateMachiene, PlayerData playerData, string animBoolName) : base(player, stateMachiene, playerData, animBoolName)
     {
@@ -19,6 +20,7 @@ public class PlayerGroundedState : PlayerState
         base.DoChecks();
 
         isGrounded = player.CheckIfGrounded();
+        isOnLadder = player.CheckIfOnLadder();
     }
 
     public override void Enter()
@@ -37,9 +39,18 @@ public class PlayerGroundedState : PlayerState
         base.LogicUpdate();
 
         xInput = player.InputHandler.NormInputX;
+        yInput = player.InputHandler.NormInputY;
         JumpInput = player.InputHandler.JumpInput;
 
-        if (JumpInput && player.JumpState.CanJump())
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary])
+        {
+            stateMachiene.ChangeState(player.PrimaryAttackState);
+        }
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary])
+        {
+            stateMachiene.ChangeState(player.SecondaryAttackState);
+        }
+        else if (JumpInput && player.JumpState.CanJump())
         {
             player.InputHandler.UseJumpInput();
             stateMachiene.ChangeState(player.JumpState);
@@ -48,6 +59,10 @@ public class PlayerGroundedState : PlayerState
         {
             player.InAirState.StartCoyoteTime();
             stateMachiene.ChangeState(player.InAirState);
+        }
+        else if (isOnLadder)
+        {
+            stateMachiene.ChangeState(player.OnLadderState);
         }
     }
 

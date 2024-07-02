@@ -11,17 +11,16 @@ public class PlayerLandState : PlayerGroundedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        if(xInput != 0)
+        if(!isExitingState)
         {
-            stateMachiene.ChangeState(player.MoveState);
-        }
-        else if(isAnimationFinished)
-        {
-            stateMachiene.ChangeState(player.IdleState);
-        }
-        {
-
+            if (xInput != 0)
+            {
+                stateMachiene.ChangeState(player.MoveState);
+            }
+            else if (isAnimationFinished)
+            {
+                stateMachiene.ChangeState(player.IdleState);
+            }
         }
     }
 }

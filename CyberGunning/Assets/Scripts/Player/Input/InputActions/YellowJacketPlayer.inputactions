@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Kick",
+                    "type": "Button",
+                    "id": "9fabbcff-b342-4cb3-88a1-06f01fff9e3a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -155,28 +164,6 @@
                 },
                 {
                     "name": "",
-                    "id": "52d55d7f-07b6-4cec-9d0c-2391ea2accab",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a9659052-4c18-4bd2-a162-5db2f112bac2",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6dc0c7c6-1790-460e-a6ba-7a0bc2dc28fa",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -188,12 +175,23 @@
                 },
                 {
                     "name": "",
-                    "id": "ed02ccdd-ccb8-4626-b896-9a2d2cb77df3",
-                    "path": "<Keyboard>/s",
+                    "id": "66ba1938-c914-44ca-aff2-53378e262224",
+                    "path": "<Keyboard>/period",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Crouch",
+                    "action": "Kick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95ec7247-f0e9-4d51-8d86-8043ff7efec3",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
