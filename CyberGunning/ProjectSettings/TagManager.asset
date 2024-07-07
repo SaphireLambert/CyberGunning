@@ -16,7 +16,7 @@ TagManager:
   - Player
   - BoxObjects
   - Ladder
-  - 
+  - Damageable
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
     locked: 0
   - name: TileMap
     uniqueID: 2504251311
+    locked: 0
+  - name: Enemy
+    uniqueID: 2232865875
     locked: 0
   - name: player
     uniqueID: 1717196091

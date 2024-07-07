@@ -37,7 +37,7 @@ public class PlayerOnLadderState : PlayerClimbState
     {
         base.LogicUpdate();
 
-        player.SetVelocityX(0);
+        //player.SetVelocityX(0);
         player.SetVelocityY(0);
 
         if(yInput != 0)

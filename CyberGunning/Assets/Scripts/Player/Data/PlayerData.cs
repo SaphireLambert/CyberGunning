@@ -5,6 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewPlayerData", menuName = ("Data/Player Data/Base Data"))]
 public class PlayerData : ScriptableObject
 {
+    [Header("UI Stats")]
+    public float maxHealth;
+    public float currentHealth;
+
+    [Header("Character Upgrades")]
+    public bool canDoubleJump;
+    public bool hasArmour;
+    public bool canWallJump;
+
     [Header("Move State")]
     public float movementVelocity = 10f;
 
@@ -34,7 +43,7 @@ public class PlayerData : ScriptableObject
     [Header("Check Variables")]
     public float groundCheckRadius = 0.5f;
     public float wallCheckDistance = 0.5f;
-    public float ladderCheckDistance;
+    public float ladderCheckDistance = 0.1f;
     public LayerMask whatIsGround;
     public LayerMask whatIsLadder;
 

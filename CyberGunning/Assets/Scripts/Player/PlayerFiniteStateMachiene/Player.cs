@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D rb {  get; private set; }
+    public PlayerInventory inventory { get; private set; }
 
     public CapsuleCollider2D capsuleCollider { get; private set; }
     #endregion
@@ -82,9 +83,13 @@ public class Player : MonoBehaviour
         InputHandler = GetComponent<PlayerInputHandler>();
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();  
+        inventory = GetComponent<PlayerInventory>();
+
+        FacingDirection = 1;
 
         StateMachiene.Initialize(IdleState);
-        FacingDirection = 1;
+        PrimaryAttackState.SetAttack(inventory.attacks[(int)CombatInputs.primary]);
+        SecondaryAttackState.SetAttack(inventory.attacks[(int)CombatInputs.secondary]);
     }
 
     private void Update()

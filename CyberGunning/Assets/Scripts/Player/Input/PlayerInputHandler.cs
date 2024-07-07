@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum CombatInputs
+{
+    primary,
+    secondary
+}
+
 public class PlayerInputHandler : MonoBehaviour
 {
     public Vector2 RawMovementInput {  get; private set; }
@@ -81,9 +87,5 @@ public class PlayerInputHandler : MonoBehaviour
     }
 }
 
-public enum CombatInputs 
-{ 
-    primary,
-    secondary
-}
+
 
