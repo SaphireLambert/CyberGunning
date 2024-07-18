@@ -7,6 +7,7 @@ public class PlayerClimbState : PlayerState
 
     protected bool isOnLadder;
     protected int yInput;
+    protected int xInput;
 
     public PlayerClimbState(Player player, PlayerStateMachiene stateMachiene, PlayerData playerData, string animBoolName) : base(player, stateMachiene, playerData, animBoolName)
     {
@@ -43,14 +44,19 @@ public class PlayerClimbState : PlayerState
         base.LogicUpdate();
 
         yInput = player.InputHandler.NormInputY;
+        xInput = player.InputHandler.NormInputX;
 
         if (isOnLadder && yInput == 0)
         {
             stateMachiene.ChangeState(player.OnLadderState);
         }
-        else if(!isOnLadder)
+        else if (!isOnLadder)
         {
             stateMachiene.ChangeState(player.IdleState);
+        }
+        else if (xInput != 0 && isOnLadder)
+        {
+            stateMachiene.ChangeState(player.MoveState);
         }
     }
 

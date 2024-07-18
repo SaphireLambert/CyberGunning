@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewAttackData", menuName = ("Data/Attack Data/Base Data"))]
-public class WeaponData : ScriptableObject
+public class WeaponDataSO : ScriptableObject
 {
-    [SerializeField] private WeaponData[] weaponData;   
+    [SerializeField] private AttackDetails[] attackDetails;
 }

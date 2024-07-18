@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour
 {
-    protected WeaponData weaponData;
+    [SerializeField] private WeaponDataSO weaponDataSO;
+
+    
 
     protected Animator attackAnimator;
 
@@ -38,7 +40,9 @@ public class Attacks : MonoBehaviour
         this.attackState = state;
     }
 
-    private void CheckMeleAttack()
+
+    #region Triggers
+    private void CheckMeleeAttack()
     {
         foreach (IDamageable item in detectedDamageable)
         {
@@ -46,11 +50,9 @@ public class Attacks : MonoBehaviour
         }
     }
 
-    #region Triggers
-
     public virtual void AnimationActionTrigger()
     {
-        CheckMeleAttack();
+        CheckMeleeAttack();
     }
 
     public virtual void AnimationFinishTrigger()

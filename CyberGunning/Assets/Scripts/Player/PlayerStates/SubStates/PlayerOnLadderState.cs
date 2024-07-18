@@ -36,18 +36,22 @@ public class PlayerOnLadderState : PlayerClimbState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        //player.SetVelocityX(0);
-        player.SetVelocityY(0);
-
-        if(yInput != 0)
-        {
-            stateMachiene.ChangeState(player.ClimbingLadderState);
-        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        player.SetVelocityX(0);
+        player.SetVelocityY(0.1f);
+
+        if (yInput != 0)
+        {
+            stateMachiene.ChangeState(player.ClimbingLadderState);
+        }
+        else if (xInput != 0)
+        {
+            stateMachiene.ChangeState(player.MoveState);
+        }
     }
 }

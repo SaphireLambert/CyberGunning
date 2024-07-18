@@ -256779,56 +256779,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &1828054508 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2837186223883297587, guid: 0ba61bfff12a4b54fa83897987674228, type: 3}
-  m_PrefabInstance: {fileID: 8504330674855015322}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1828054513
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828054508}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.21875, y: 2.09375}
-    newSize: {x: 2.21875, y: 2.09375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.21875, y: 2.09375}
-  m_EdgeRadius: 0
 --- !u!1 &1847439708
 GameObject:
   m_ObjectHideFlags: 0
@@ -257370,14 +257320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5183115855313136976, guid: 0ba61bfff12a4b54fa83897987674228, type: 3}
-      propertyPath: m_Controller
+    - target: {fileID: 3937785149194594385, guid: 0ba61bfff12a4b54fa83897987674228, type: 3}
+      propertyPath: weaponDataSO
       value: 
-      objectReference: {fileID: 9100000, guid: e2afe8ef37dfe9f46a4466324400091d, type: 2}
-    - target: {fileID: 6698965625395753647, guid: 0ba61bfff12a4b54fa83897987674228, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 473b1042ae9740144a8c11172efb485e, type: 2}
+      objectReference: {fileID: 11400000, guid: c8d307d16d13a7c419654a6f6ef96e73, type: 2}
     - target: {fileID: 8134503027219931947, guid: 0ba61bfff12a4b54fa83897987674228, type: 3}
       propertyPath: m_Name
       value: Player01
@@ -257425,10 +257371,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2837186223883297587, guid: 0ba61bfff12a4b54fa83897987674228, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1828054513}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ba61bfff12a4b54fa83897987674228, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
