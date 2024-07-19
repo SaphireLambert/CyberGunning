@@ -8,7 +8,7 @@ public class TestDummy : MonoBehaviour, IDamageable
 
     public void Damage(float amount)
     {
-        throw new System.NotImplementedException();
+        Destroy(gameObject);
     }
 
     private void Awake()

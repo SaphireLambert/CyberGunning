@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Attacks : MonoBehaviour
 {
     [SerializeField] private WeaponDataSO weaponDataSO;
 
-    
+    protected int attackCounter;
 
     protected Animator attackAnimator;
 
@@ -24,6 +25,11 @@ public class Attacks : MonoBehaviour
     public virtual void EnterAttack()
     {
         gameObject.SetActive(true);
+
+        if(attackCounter >= weaponDataSO.amountOfAttacks)
+        {
+            attackCounter = 0;
+        }
 
         attackAnimator.SetBool("attack", true);
     }
@@ -44,9 +50,12 @@ public class Attacks : MonoBehaviour
     #region Triggers
     private void CheckMeleeAttack()
     {
-        foreach (IDamageable item in detectedDamageable)
+        AttackDetails attackDetails = weaponDataSO.AttackDetails[attackCounter];
+
+        foreach (IDamageable item in detectedDamageable.ToList()
+            )
         {
-            item.Damage(10);
+            item.Damage(attackDetails.damageAmount);
         }
     }
 
